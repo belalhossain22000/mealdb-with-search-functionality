@@ -5,17 +5,33 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Meal from './components/Meal/Meal';
 import Header from './components/Header/Header';
-// import { Button } from 'react-bootstrap';
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  // search btn implimentation
+  const [searchTerm, setSearchTerm] = useState("");
+  const [search,setSearch]=useState("");
+
+  const handleSearFeald = () => {
+    setSearch(searchTerm);
+    console.log(searchTerm)
+  }
+
+  function handleInputChange(event) {
+    setSearchTerm(event.target.value);
+  }
+
+  
 
   return (
     <div className="App">
-      <Header></Header>
-     <Meal></Meal>
+      <Header 
+        searchTerm={searchTerm}
+        handleSearFeald={handleSearFeald}
+        handleInputChange={handleInputChange}
+      ></Header>
+     <Meal searchTerm={search}></Meal>
     </div>
   )
 }
